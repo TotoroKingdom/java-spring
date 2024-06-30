@@ -1,4 +1,4 @@
-package org.springframework.test.beans.factory;
+package org.springframework.test.ioc;
 
 /**
  * @Author: totoro
@@ -12,4 +12,5 @@ public class HelloService {
         System.out.println("hello");
         return "hello";
     }
+
 }

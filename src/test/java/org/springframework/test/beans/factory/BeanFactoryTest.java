@@ -2,6 +2,10 @@ package org.springframework.test.beans.factory;
 
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -13,25 +17,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BeanFactoryTest{
 
-    @Test
-    public void testGetBean(){
 
-        BeanFactory beanFactory = new BeanFactory();
-        beanFactory.registerBean("helloService", new HelloService());
+    @Test
+    public void testBeanFactory(){
+
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        BeanDefinition beanDefinition = new BeanDefinition(HelloService.class);
+        beanFactory.registerBeanDefinition("helloService",beanDefinition);
 
         HelloService helloService = (HelloService) beanFactory.getBean("helloService");
+        helloService.sayHello();
 
-        assertThat(helloService).isNotNull();
-        assertThat(helloService.sayHello()).isEqualTo("hello");
 
     }
+//    @Test
+//    public void testBeanFactory(){
+//
+//        BeanFactory beanFactory = new BeanFactory();
+//        beanFactory.registerBean("helloService", new HelloService());
+//
+//        HelloService helloService = (HelloService) beanFactory.getBean("helloService");
+//
+//        assertThat(helloService).isNotNull();
+//        assertThat(helloService.sayHello()).isEqualTo("hello");
+//
+//    }
 
-    class HelloService{
-
-        public String sayHello(){
-            System.out.println("hello");
-            return "hello";
-        }
-    }
 
 }

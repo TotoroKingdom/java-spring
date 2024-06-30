@@ -1,5 +1,7 @@
 package org.springframework.beans.factory;
 
+import org.springframework.beans.factory.BeansException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,16 +11,25 @@ import java.util.Map;
  * @Description: bean工厂
  */
 
-public class BeanFactory {
+public interface BeanFactory {
 
-    private Map<String, Object> beanMap = new HashMap<>();
 
-    public void registerBean(String name, Object bean){
-        beanMap.put(name, bean);
-    }
+    /**
+     * 获取bean
+     * @param name
+     * @return
+     * @throws BeansException
+     */
+    Object getBean(String name) throws BeansException;
 
-    public Object getBean(String name){
-        return beanMap.get(name);
-    }
+//    private Map<String, Object> beanMap = new HashMap<>();
+//
+//    public void registerBean(String name, Object bean){
+//        beanMap.put(name, bean);
+//    }
+//
+//    public Object getBean(String name){
+//        return beanMap.get(name);
+//    }
 
 }

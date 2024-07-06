@@ -7,6 +7,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 
+import java.io.IOException;
 import java.io.InputStream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.in;
@@ -46,6 +47,17 @@ public class ResourceAndResourceLoaderTest {
         inputStream = resource.getInputStream();
         content = IoUtil.readUtf8(inputStream);
         System.out.println(content);
+
+    }
+
+    @Test
+    public void testXmlResource() throws IOException {
+        DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
+        Resource resource = resourceLoader.getResource("classpath:spring.xml");
+        InputStream inputStream = resource.getInputStream();
+        String content = IoUtil.readUtf8(inputStream);
+        System.out.println(content);
+//        assertThat(content).isEqualTo("hello");
 
     }
 }

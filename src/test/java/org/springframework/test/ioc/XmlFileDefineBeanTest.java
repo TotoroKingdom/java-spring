@@ -18,7 +18,6 @@ public class XmlFileDefineBeanTest {
 
     @Test
     public void testXmlFile() throws Exception{
-        System.setProperty( "javax.xml.parsers.DocumentBuilderFactory","org.apache.xerces.jaxp.DocumentBuilderFactoryImpl" );
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);

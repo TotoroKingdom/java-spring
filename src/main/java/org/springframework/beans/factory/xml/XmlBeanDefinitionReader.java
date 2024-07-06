@@ -1,8 +1,7 @@
 package org.springframework.beans.factory.xml;
 
-import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.core.util.XmlUtil;
+import org.dom4j.io.SAXReader;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -15,7 +14,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -55,10 +53,18 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         } catch (Exception e) {
             throw new BeansException("IOException parsing XML document from"+ resource, e);
         }
+
+
     }
 
     protected void doLoadBeanDefinitions(InputStream inputStream) throws Exception {
-        Document document = XmlUtil.readXML(inputStream);
+
+//        Document document = XmlUtil.readXML(inputStream);
+
+        SAXReader saxReader=new SAXReader();
+
+        Document document = (Document) saxReader.read(inputStream);
+
         Element root = document.getDocumentElement();
         NodeList childNodes = root.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
@@ -103,6 +109,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
                             }
                         }
                     }
+                    //注册BeanDefinition
                     getRegistry().registerBeanDefinition(beanName, beanDefinition);
 
                 }

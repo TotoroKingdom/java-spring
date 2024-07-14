@@ -24,6 +24,8 @@ public abstract class AbstractBeanFactor extends DefaultSingletonBeanRegistry im
         return createBean(name, beanDefinition);
     }
 
+    protected abstract boolean containsBeanDefinition(String beanName);
+
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition)throws BeansException;
 
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;

@@ -16,4 +16,11 @@ public interface BeanDefinitionRegistry {
      * @param beanDefinition
      */
     void registerBeanDefinition(String beanName, BeanDefinition beanDefinition);
+
+
+    /**
+     * 返回定义的所有bean的名称
+     * @return
+     */
+    String[] getBeanDefinitionNames();
 }

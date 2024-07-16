@@ -13,7 +13,10 @@ import java.util.Map;
  * @createDate: 2024 07 14 23 39
  * @description:
  **/
-public interface ConfigurableListableBeanFactory extends ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory {
+public interface ConfigurableListableBeanFactory
+        extends ListableBeanFactory
+        , AutowireCapableBeanFactory
+        , ConfigurableBeanFactory {
 
     /**
      * 根据名称查找BeanDefinition

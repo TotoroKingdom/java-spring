@@ -2,6 +2,7 @@ package org.springframework.beans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PropertyPermission;
 
 /**
  * @Author: totoro
@@ -14,6 +15,15 @@ public class PropertyValues {
     private final List<PropertyValue> propertyValueList = new ArrayList<>();
 
     public void addPropertyValue(PropertyValue pv){
+        for (int i = 0; i < this.propertyValueList.size(); i++) {
+            PropertyValue currentPv = this.propertyValueList.get(i);
+            if (currentPv.getName().equals(pv.getName())){
+                //覆盖原有的值
+                this.propertyValueList.set(i, pv);
+                return;
+            }
+        }
+
         propertyValueList.add(pv);
     }
 
@@ -30,6 +40,7 @@ public class PropertyValues {
         }
         return null;
     }
+
 
 
 }

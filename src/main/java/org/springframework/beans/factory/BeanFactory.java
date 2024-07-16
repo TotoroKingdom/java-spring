@@ -19,14 +19,14 @@ public interface BeanFactory {
      */
     Object getBean(String name) throws BeansException;
 
-//    private Map<String, Object> beanMap = new HashMap<>();
-//
-//    public void registerBean(String name, Object bean){
-//        beanMap.put(name, bean);
-//    }
-//
-//    public Object getBean(String name){
-//        return beanMap.get(name);
-//    }
+    /**
+     * 根据名称和类型查找bean
+     * @param name
+     * @param requiredType
+     * @return
+     * @param <T>
+     * @throws BeansException
+     */
+    <T> T getBean(String name, Class<T> requiredType) throws BeansException;
 
 }

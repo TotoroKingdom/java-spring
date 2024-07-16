@@ -16,6 +16,7 @@ import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        System.out.println("CustomBeanFactoryPostProcessor#postProcessBeanFactory");
         BeanDefinition personBeanDefinition = beanFactory.getBeanDefinition("person");
         PropertyValues propertyValues = personBeanDefinition.getPropertyValues();
         //将person的name属性值改变

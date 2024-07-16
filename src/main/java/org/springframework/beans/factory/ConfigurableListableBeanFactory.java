@@ -1,7 +1,10 @@
 package org.springframework.beans.factory;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 
 import java.util.Map;
 
@@ -10,7 +13,7 @@ import java.util.Map;
  * @createDate: 2024 07 14 23 39
  * @description:
  **/
-public interface ConfigurableListableBeanFactory extends ListableBeanFactory{
+public interface ConfigurableListableBeanFactory extends ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory {
 
     /**
      * 根据名称查找BeanDefinition
@@ -25,5 +28,7 @@ public interface ConfigurableListableBeanFactory extends ListableBeanFactory{
      * @throws BeansException
      */
     void preInstantiateSingletons() throws BeansException;
+
+    void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
 
 }

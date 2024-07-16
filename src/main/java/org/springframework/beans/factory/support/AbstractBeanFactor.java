@@ -31,6 +31,11 @@ public abstract class AbstractBeanFactor extends DefaultSingletonBeanRegistry im
         return createBean(name, beanDefinition);
     }
 
+    @Override
+    public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
+        return ((T) getBean(name));
+    }
+
     protected abstract boolean containsBeanDefinition(String beanName);
 
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition)throws BeansException;

@@ -27,7 +27,7 @@ public class DefaultListableBeanFactory
     }
 
     @Override
-    protected boolean containsBeanDefinition(String beanName) {
+    public boolean containsBeanDefinition(String beanName) {
         return beanDefinitionMap.containsKey(beanName);
     }
 

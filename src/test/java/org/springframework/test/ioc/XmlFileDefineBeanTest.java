@@ -27,11 +27,11 @@ public class XmlFileDefineBeanTest {
         Person person = (Person) beanFactory.getBean("person");
         System.out.println(person);
         assertThat(person.getName()).isEqualTo("totoro");
-        assertThat(person.getCar().getBrand()).isEqualTo("porsche");
+        assertThat(person.getCar().getBrand()).isEqualTo("mercedes");
 
         Car car = (Car) beanFactory.getBean("car");
         System.out.println(car);
-        assertThat(car.getBrand()).isEqualTo("porsche");
+        assertThat(car.getBrand()).isEqualTo("mercedes");
 
     }
 }

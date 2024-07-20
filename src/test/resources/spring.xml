@@ -20,6 +20,6 @@
 
 <!--    <bean class="org.springframework.test.common.CustomerBeanPostProcessor"/>-->
 
-<!--    <bean id="helloService" class="org.springframework.test.service.HelloService"/>-->
+    <bean id="helloService" class="org.springframework.test.ioc.service.HelloService"/>
 
 </beans>
